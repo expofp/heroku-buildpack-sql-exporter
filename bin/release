@@ -4,5 +4,5 @@
 cat << EOF
 ---
 default_process_types:
-  web: "web: sql_exporter -config.file sql_exporter.yml -web.listen-address 0.0.0.0:$PORT -config.data-source-name $SQL_EXPORTER_DATA_SOURCE"
+  web: "web: ./sql_exporter -config.file ./sql_exporter.yml -web.listen-address 0.0.0.0:$PORT -config.data-source-name $SQL_EXPORTER_DATA_SOURCE"
 EOF

@@ -10,7 +10,7 @@ ENV_DIR="${3:-}"
 
 # See https://github.com/free/sql_exporter/releases
 VER=$(heroku config:get SQL_EXPORTER_VERSION)
-[ -z "$VER" ] && VER=" 0.5"
+[ -z "$VER" ] && VER="0.5"
 
 die(){
   echo "$@"
@@ -22,7 +22,7 @@ chmod +x "$BUILD_DIR/sql_exporter" || die
 echo "SQL Exporter binary installed."
 
 # Debugging
-echo "Collectors:"
+echo "Files:"
 ls "$BUILD_DIR"
 
 echo "Config:"
