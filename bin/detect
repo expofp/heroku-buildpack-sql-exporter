@@ -1,0 +1,22 @@
+#!/bin/sh
+
+BUILD_DIR="$1"
+
+[ -z "$BUILD_DIR" ] && BUILD_DIR=`pwd`
+
+check_file(){
+  local file="$1"
+  echo "Detecting file $file ..."
+  if [ -f "$BUILD_DIR/$file" ]; then
+    echo "OK: File $file detected."
+    exit 0
+  else
+    echo "ERROR: Missing file $file"
+    ls "$BUILD_DIR"
+    exit 1
+  fi
+}
+
+check_file "sql_exporter"
+check_file "sql_exporter.yml"
+check_file "Procfile"

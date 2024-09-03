@@ -1,0 +1,30 @@
+#!/bin/sh
+
+BUILD_DIR="${1:-}"
+CACHE_DIR="${2:-}"
+ENV_DIR="${3:-}"
+
+[ -z "$BUILD_DIR" ] && BUILD_DIR=`pwd`
+[ -z "$CACHE_DIR" ] && CACHE_DIR="/tmp"
+[ -z "$ENV_DIR" ] && ENV_DIR="dev"
+
+VER=$(heroku config:get SQL_EXPORTER_VERSION)
+[ -z "$VER" ] && VER=" 0.5"
+
+die(){
+  echo "$@"
+  exit 1
+}
+
+# See https://github.com/free/sql_exporter/releases
+
+echo "Make SQL Exporter $VER executive..."
+chmod +x "$BUILD_DIR/sql_exporter" || die
+echo "SQL Exporter binary installed."
+
+# Debugging
+echo "Collectors:"
+ls "$BUILD_DIR/*.collector.yml"
+
+echo "Config:"
+cat "$BUILD_DIR/sql_exporter.yml"
