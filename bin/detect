@@ -17,6 +17,7 @@ check_file(){
   fi
 }
 
+# Check files
 check_file "sql_exporter"
 check_file "sql_exporter.yml"
 check_file "Procfile"
