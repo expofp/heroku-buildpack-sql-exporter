@@ -17,13 +17,13 @@ die(){
   exit 1
 }
 
-echo "Make SQL Exporter $VER executive..."
+echo "Make SQL Exporter v$VER executive..."
 chmod +x "$BUILD_DIR/sql_exporter" || die
 echo "SQL Exporter binary installed."
 
 # Debugging
 echo "Collectors:"
-ls "$BUILD_DIR/*.collector.yml"
+ls "$BUILD_DIR"
 
 echo "Config:"
 cat "$BUILD_DIR/sql_exporter.yml"
